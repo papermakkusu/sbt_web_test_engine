@@ -1,0 +1,57 @@
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <div class="page-header">
+        <a href="{% url 'front_face.views.go_page' %}" class="top-menu"></a>
+        <h1>Проверяем базу</h1>
+    </div>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                <form action="" method="post">{% csrf_token %}
+                    <div class="post">
+                        <div class="wrapper">
+                            <h1>Выберите страницу</h1>
+                            {{choose.as_p}}
+                            <h1>Проверьте элементы</h1>
+                            <table class="tile_table">
+                                <tr>
+                                    <td>
+                                        {{button_check.as_p}}
+                                        <button class="myButtonGrey" type="submit" name="btnform">Проверить</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="wrapper">
+                            <h1>Элементы страницы</h1>
+                                    <table class="filtr_table"  >
+                                            <td width="140">{{type_el.as_p}}</td>
+                                            <td width="195">{{name.as_p}}</td>
+                                            <td width="390">{{xpath.as_p}}</td>
+                                    </table>
+                            <table class="elementTable" >
+                                <thead>
+                                    <tr>
+                                        <th>Тип</th>
+                                        <th>Название</th>
+                                        <th>Локатор</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {% for field in status %}
+                                    <tr>
+                                        {% for text in field %}
+                                        <td>{{ text }}</td>
+                                        {% endfor %}
+                                    </tr>
+                                    {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}

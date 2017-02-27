@@ -1,0 +1,47 @@
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <div class="page-header">
+        <a href="{% url 'front_face.views.run_page' %}" class="top-menu"></a>
+        <h1>Запускаем тесты</h1>
+    </div>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                <form action="" method="post">{% csrf_token %}
+                    <div class="post">
+                        <div class="wrapper">
+                            <h1>Выберите стенд</h1>
+                            {{choose_stand.as_p}}
+                            <h1>Выберите тест</h1>
+                            {{choose_test.as_p}}
+                            <h1>Запустите тест</h1>
+                            <table class="tile_table">
+                                <tr>
+                                    <td>
+                                        {{button_check.as_p}}
+                                        <button class="myButtonGrey" type="submit" name="btnform">Запустить</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                        <table class="elementTable">
+                            <thead>
+                                <tr>
+                                    <th>Результат запуска</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for line in status %}
+                                <tr>
+                                    <td>{{ line }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}

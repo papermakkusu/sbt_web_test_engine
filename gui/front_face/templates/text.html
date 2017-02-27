@@ -1,0 +1,66 @@
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <div class="page-header">
+        <a href="{% url 'front_face.views.text_page' %}" class="top-menu"></a>
+        <h1>Пишем тесты</h1>
+    </div>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                <form action="" method="post">{% csrf_token %}
+                    <div class="post">
+                        <div class="wrapper">
+                            <h1>Название теста</h1>
+                            <table class="tile_table">
+                                <tr>
+                                    <td width="300" height="20">
+                                        {{test_name.as_p}}
+                                    </td>
+                                </tr>
+                            </table>
+                            <h1>Текст теста</h1>
+                            <table class="tile_table">
+                                <tr>
+                                    <td width="20" height="20">
+                                        {{txt_area.as_p}}
+                                        {{hidden.as_p}}
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="tile_table">
+                                <tr>
+                                    <td width="650" height="20">
+                                        {{status}}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="120" height="10">
+                                    </td>
+                                </tr>
+                            </table>
+                            <table class="tile_table">
+                                <tr>
+                                    <td width="120" height="20">
+                                        {{button_check.as_p}}
+                                        <button class="myButtonGrey" type="submit" name="btnform1">Загрузить</button>
+                                    </td>
+                                    <td width="120" height="20">
+                                        {{button_save.as_p}}
+                                        <button class="myButtonRed" type="submit" name="btnform2" onclick="return confirm('Сохранение невозможно отменить. Вы уверены?')">Сохранить</button>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
+
+
+
+
+
+

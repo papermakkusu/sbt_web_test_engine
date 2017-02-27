@@ -1,0 +1,49 @@
+    {% extends 'base.html' %}
+
+    {% block content %}
+    <div class="page-header">
+        <a href="{% url 'front_face.views.go_page' %}" class="top-menu"></a>
+        <h1>Проверяем локаторы</h1>
+    </div>
+    <div class="content container">
+        <div class="row">
+            <div class="col-md-8">
+                <form action="" method="post">{% csrf_token %}
+                    <div class="post">
+                        <div class="wrapper">
+                            <h1>Адрес страницы</h1>
+                            {{url.as_p}}
+                        </div>
+                        <div class="wrapper">
+                            <h1>Имя элемента</h1>
+                            <h7 class="nameFormOne">{{choose.as_p}}</h7>
+                            <h7 class="nameFormTwo">{{name.as_p}}</h7>
+                        </div>
+                        <div class="wrapper">
+                            <h1>Xpath-локатор</h1>
+                            {{xpath.as_p}}
+                        </div>
+                        <div class="wrapper">
+                            <h1>Что говорит приложение</h1>
+                            {{status}}
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <table class="tile_table">
+                            <tr>
+                                <td>
+                                    {{button_check.as_p}}
+                                    <button class="myButtonGrey" type="submit" name="btnform1">Проверить</button>
+                                </td>
+                                <td>
+                                    {{button_save.as_p}}
+                                    <button class="myButtonRed" type="submit" name="btnform2" onclick="return confirm('Сохранение невозможно отменить. Вы уверены?')">Сохранить</button>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    {% endblock content %}
