@@ -17,7 +17,7 @@ class Driver(object):
 
     """
 
-    def __init__(self, log_name: str, user_ip: str="localhost", driver="PhantomJS", project: str=Constants.PROJECT, ):
+    def __init__(self, log_name: str="log", user_ip: str="localhost", driver="PhantomJS", project: str=Constants.PROJECT, ):
         """
         All configs values should be stored to configuration file
         """
